@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"time"
 )
 
@@ -11,7 +10,11 @@ func durationSum(data []Entry) time.Duration {
 	for i := range data {
 		s += data[i].duration
 	}
-	fmt.Println("type of s: ", reflect.TypeOf(s))
-	fmt.Println("duration sum: ", s)
+	fmt.Println("duration sum (all elements): ", s)
+	fmt.Println("duration diff (sum-first element): ", s-data[0].duration)
 	return s
+}
+
+func calculateOvertime(targetH time.Duration, actualH time.Duration) time.Duration {
+	return actualH - targetH
 }

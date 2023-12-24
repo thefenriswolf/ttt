@@ -3,15 +3,19 @@ package main
 import (
 	"fmt"
 	"os"
-	"reflect"
 )
 
 func main() {
 	fn, _ := argParse(os.Args[1:]) // #todo: swap if actions are implemented
 	data := readAndParse(fn)
-	k := data[0].duration
-	fmt.Println("type of duration: ", reflect.TypeOf(k))
+	var kwEntry []Entry
+	for i, _ := range data {
+		if data[i].kw == 52 {
+			kwEntry = append(kwEntry, data[i])
+		}
+	}
 	_ = durationSum(data)
+	_ = durationSum(kwEntry)
 
 	fmt.Println("parsed file entries:")
 	for i := range data {
