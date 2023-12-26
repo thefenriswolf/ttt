@@ -6,19 +6,20 @@
 * Table of Contents :TOC:QUOTE:
 #+BEGIN_QUOTE
 - [[#ttt][ttt]]
-- [[#features][Features]]
 - [[#installation][Installation]]
   - [[#via-go][Via Go]]
   - [[#manual][Manual]]
 - [[#usage][Usage]]
+  - [[#getting-started][Getting started]]
+  - [[#organize-and-clean-database][Organize and clean database]]
+  - [[#print-reports][Print Reports]]
+  - [[#print-help][Print help]]
 - [[#credits][Credits]]
   - [[#dependencies][Dependencies]]
   - [[#similar-projects][Similar Projects]]
 - [[#license][License]]
 - [[#the-story-behind-this-program][The story behind this program]]
 #+END_QUOTE
-
-* Features
 
 * Installation
 ** Via Go
@@ -35,6 +36,44 @@ sudo mv ttt /usr/local/bin # optional
 #+end_src
 
 * Usage
+** Getting started
+Create a database file, this is always a =CSV= file.
+*!Currently you can't change field order and delimiter at runtime!* This will be implemented in the future.
+
+The following defaults apply:
+- delimiter: ' ' (single space)
+- comment: #
+- date format: DD.MM.YYYY
+- time format: HHMM
+
+As you can tell from the example database below, the entries don't have to be in chronological order.
+=ttt= will sort them and group them at runtime.
+#+begin_src csv
+# date startTime endTime Activity
+
+20.09.2023 1400 1700 $Jobname
+20.12.2023 1400 1700 $Jobname
+20.09.2023 1400 1700 $Jobname
+20.07.2023 1400 1700 $Jobname
+20.01.2023 1400 1700 $Jobname
+#+end_src
+
+** Organize and clean database
+#+begin_src bash
+ttt -f somefile.csv print
+#+end_src
+Prints your file to =stdout= after sorting it and removing empty lines.
+
+** Print Reports
+#+begin_src bash
+ttt -f somefile.csv report
+#+end_src
+Prints a worktime report to =stdout=.
+
+** Print help
+#+begin_src bash
+ttt --help
+#+end_src
 
 * Credits
 ** Dependencies
