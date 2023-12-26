@@ -1,0 +1,36 @@
+[[file:https://github.com/thefenriswolf/ttt/blob/main/resources/ttt_icon.svg]]
+
+* ttt
+=ttt= is a cli time tracker tool written in Golang.
+
+* Table of Contents :TOC:QUOTE:
+#+BEGIN_QUOTE
+- [[#ttt][ttt]]
+- [[#features][Features]]
+- [[#installation][Installation]]
+  - [[#via-go][Via Go]]
+  - [[#manual][Manual]]
+- [[#usage][Usage]]
+- [[#license][License]]
+#+END_QUOTE
+
+* Features
+
+* Installation
+** Via Go
+#+begin_src bash
+go get github.com/thefenriswolf/ttt
+#+end_src
+** Manual
+#+begin_src bash
+git clone https://github.com/thefenriswolf/ttt.git
+cd ttt
+go build .
+
+sudo mv ttt /usr/local/bin # optional
+#+end_src
+
+* Usage
+
+* License
+=ttt= is [[https://github.com/thefenriswolf/ttt/blob/main/LICENSE][BSD Clause 3]] licensed.
