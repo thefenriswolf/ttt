@@ -38,10 +38,11 @@ func weekReport(fn string) {
 				fmt.Printf("%s: %s\n", dateF, durationF)
 			}
 		}
-		weekSum := weekSum(dS, weekNumbers[i])
+		kW := weekNumbers[i]
+		weekSum := weekSum(dS, kW)
 		overtime := calculateOvertime(weeklyHours, weekSum)
-		fmt.Printf("Weekly sum: %s\n", weekSum)
-		fmt.Printf("Weekly overtime: %s\n\n", overtime)
+		fmt.Printf("=========================\nSummary KW%d:\n-------------------------\nWeekly sum: %s\n", kW, weekSum)
+		fmt.Printf("Weekly overtime: %s\n=========================\n\n\n", overtime)
 	}
 }
 
