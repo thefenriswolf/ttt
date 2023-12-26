@@ -1,7 +1,7 @@
 [[file:https://github.com/thefenriswolf/ttt/blob/main/resources/ttt_icon.svg]]
 
 * ttt
-=ttt= is a cli time tracker tool written in Golang.
+=ttt= is a cli time tracker tool written in GoLang, using a plain text file as it's database.
 
 * Table of Contents :TOC:QUOTE:
 #+BEGIN_QUOTE
@@ -11,7 +11,11 @@
   - [[#via-go][Via Go]]
   - [[#manual][Manual]]
 - [[#usage][Usage]]
+- [[#credits][Credits]]
+  - [[#dependencies][Dependencies]]
+  - [[#similar-projects][Similar Projects]]
 - [[#license][License]]
+- [[#the-story-behind-this-program][The story behind this program]]
 #+END_QUOTE
 
 * Features
@@ -32,5 +36,73 @@ sudo mv ttt /usr/local/bin # optional
 
 * Usage
 
+* Credits
+** Dependencies
+=ttt= depends on the following projects:
+- [[https://github.com/mpvl/unique][Marcel van Lohuizen's unique package]]
+- [[https://github.com/urfave/cli][urfave's cli package]]
+
+** Similar Projects
+- [[https://ledger-cli.org][ledger-cli]] the main inspiration for this project.
+  - yes, you can track time with ledger see [[https://bloerg.net/posts/time-tracking-with-ledger/][here]]
+
 * License
 =ttt= is [[https://github.com/thefenriswolf/ttt/blob/main/LICENSE][BSD Clause 3]] licensed.
+
+* The story behind this program
+=ttt= has been created to solve a very specific problem of mine:
+
+You see I want to track my workhours, but I can't bring my laptop with me to work.
+Of course the company I work for has it's own fancy web-based worktime recording system.
+It does sophisticated reports, keeps track of your days off and even handles day off requests.
+
+But I found it to be unreliable, at least once a month it fails to record my clock-in or clock-out.
+This can only be retroactively filled in by someone with admin privileges, which I don't have.
+So in theory a nefarious employer could ask the admin to manipulate the database in their favor.
+
+Thus I have my own offsite recordings, in the past I used to use an app on my phone for this.
+I would then export my records as a =CSV= file and process it on my computer.
+
+This worked just fine until the app developer got greedy and locked the export button behind a *35€ (or 0.99€/mo)* paywall!
+
+At that time I was already using =ledger-cli= for my finances and ledger can also do time tracking.
+But writing ledger files by hand on a tiny smartphone screen is tedious.
+
+Yes you can prepopulate the file with blank entries on a computer and just fill in the time on the phone or copy and paste a template every time.
+
+Trust me I tried both methods.
+
+The blank entries method makes you search for the current date for a while and the copy and paste method falls apart when you see how bad precise text selection works on a phone.
+
+For the uninitiated, a ledger time record looks like this:
+#+begin_src ledger
+i 2023/12/20 05:30:00 Work:$Job
+o 2023/12/20 14:00:00
+#+end_src
+
+Two lines, not too bad you'd think, what's the big deal you'd think.
+
+Well let me tell you, those 2 lines per day add up.
+
+Let's do some quick math:
+- The usual work week for most people (at least where I live) consist of 5 workdays.
+- There are 52 weeks in a year if we don't account for days off.
+- We need 2 lines per record, but realistically you want a blank line after every record to introduce at least a minimum of readability.
+#+begin_src
+5 days per week * 52 weeks per year * 3 lines per entry = 780 lines!
+#+end_src
+You see, by December i was scrolling quite a bit to get to the bottom of a file.
+Now of course you could combat that problem by creating a new file every month but that method just does not scale if you want to calculate your overtime at the end of the year.
+
+So I searched around for a while for project that could do the same job but with a quicker syntax.
+Most programs command syntax (like [[https://timewarrior.net][timewarrior]]) require you to be on a computer to use the program effectively.
+
+This made me think if I couldn't write my own program, that fit my needs perfectly, bear in mind that I am not a programmer and I also don't play one on TV.
+The best I could do were:
+- nix for my home-manager and NixOS configs
+- bash scripts that failed in spectacular ways with more bugs than features
+- python image manipulation scripts I had to write for University
+- and R statistics scripts, also for University
+
+So here we are, I made a program that barely has enough features to be useful to me.
+I chose GoLang because I wanted it to be statically compiled and sort of fast (=ttt= spits out reports in ~20ms).

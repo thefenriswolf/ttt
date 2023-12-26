@@ -24,22 +24,28 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="1.8188186"
-     inkscape:cx="227.07047"
-     inkscape:cy="274.62881"
+     inkscape:zoom="1.9052072"
+     inkscape:cx="310.46492"
+     inkscape:cy="248.5294"
      inkscape:window-width="1906"
      inkscape:window-height="1029"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer2" />
   <defs
      id="defs1">
+    <rect
+       x="302.68127"
+       y="176.27213"
+       width="194.01556"
+       height="155.85346"
+       id="rect4" />
     <linearGradient
        id="linearGradient14"
        inkscape:collect="always">
       <stop
-         style="stop-color:#7287fd;stop-opacity:0.88161784;"
+         style="stop-color:#7ab4fa;stop-opacity:0.88161784;"
          offset="0.94999999"
          id="stop15" />
       <stop
@@ -105,7 +111,11 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
     <circle
        style="opacity:0.95;mix-blend-mode:normal;fill:url(#radialGradient16);fill-opacity:1;fill-rule:evenodd;stroke:#1e66f5;stroke-width:2;stroke-dasharray:none;stroke-opacity:0.0496454;filter:url(#filter9)"
        id="path1"
@@ -113,50 +123,57 @@
        cy="248.98097"
        r="210.8382"
        inkscape:label="circle"
-       sodipodi:insensitive="true" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Layer 2">
-    <g
-       id="g18"
-       style="fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
-       sodipodi:insensitive="true">
-      <text
-         xml:space="preserve"
-         id="text1"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
-         transform="matrix(2.9074254,-1.9985224e-4,1.9475677e-4,2.8339875,-184.29421,-130.44715)"
-         inkscape:label="tlm"
-         inkscape:transform-center-x="37.560434"
-         inkscape:transform-center-y="-86.830456"><tspan
-           x="141.16602"
-           y="206.21602"
-           id="tspan4">t</tspan></text>
-      <text
-         xml:space="preserve"
-         id="text2"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
-         transform="matrix(-1.4612282,2.5135502,-2.4500611,-1.4243194,820.79269,53.587612)"
-         inkscape:label="tul"
-         inkscape:transform-center-x="-93.94388"
-         inkscape:transform-center-y="11.1741"><tspan
-           x="141.16602"
-           y="206.21602"
-           id="tspan5">t</tspan></text>
-      <text
-         xml:space="preserve"
-         id="text3"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect3);display:inline;fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
-         transform="matrix(1.4821148,2.5012912,2.4381118,-1.4446785,-295.44347,58.267216)"
-         inkscape:label="tur"
-         inkscape:transform-center-x="93.84754"
-         inkscape:transform-center-y="11.956222"><tspan
-           x="141.16602"
-           y="206.21602"
-           id="tspan6">t</tspan></text>
-    </g>
+       transform="matrix(0.59832626,0,0,0.59832626,-4.1981628,94.53325)" />
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
+       transform="matrix(1.739589,-1.1957684e-4,1.1652809e-4,1.6956491,-114.46623,13.594488)"
+       inkscape:label="tlm"
+       inkscape:transform-center-x="37.560434"
+       inkscape:transform-center-y="-86.830456"><tspan
+         x="141.16602"
+         y="206.21602"
+         id="tspan7">t</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect2);display:inline;fill:#191a23;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
+       transform="matrix(-0.8742912,1.5039231,-1.4659359,-0.8522077,486.90366,126.59613)"
+       inkscape:label="tul"
+       inkscape:transform-center-x="-93.94388"
+       inkscape:transform-center-y="11.1741"><tspan
+         x="141.16602"
+         y="206.21602"
+         id="tspan8">t</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect3);display:inline;fill:#ff2c22;fill-opacity:1;stroke:#8839ef;stroke-opacity:0.92912"
+       transform="matrix(0.88678821,1.4965882,1.4587863,-0.86438908,-180.96975,129.39606)"
+       inkscape:label="tur"
+       inkscape:transform-center-x="93.84754"
+       inkscape:transform-center-y="11.956222"><tspan
+         x="141.16602"
+         y="206.21602"
+         id="tspan9">t</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.7244px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect4);display:inline;opacity:0.95;fill:#191a23;stroke:#7ab4fa;stroke-width:0.636319;stroke-dasharray:none;stroke-opacity:0.95"
+       transform="matrix(1.5715391,0,0,1.5715391,-170.53962,-133.19582)"
+       inkscape:label="text4"><tspan
+         x="302.68164"
+         y="213.28996"
+         id="tspan10">time
+</tspan><tspan
+         x="302.68164"
+         y="264.19547"
+         id="tspan11">tracker 
+</tspan><tspan
+         x="302.68164"
+         y="315.10097"
+         id="tspan12">tool</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
