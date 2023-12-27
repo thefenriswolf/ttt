@@ -90,7 +90,7 @@ func initCli() {
 				// subcommands for: report
 				Subcommands: []*cli.Command{
 					&cli.Command{
-						Name:    "weekly",
+						Name:    "week",
 						Usage:   "generate weekly report",
 						Aliases: []string{"w"},
 						Action: func(cCtx *cli.Context) error {
@@ -99,7 +99,7 @@ func initCli() {
 						},
 					},
 					&cli.Command{
-						Name:    "monthly",
+						Name:    "month",
 						Usage:   "generate monthly report",
 						Aliases: []string{"m"},
 						Action: func(cCtx *cli.Context) error {
@@ -108,7 +108,7 @@ func initCli() {
 						},
 					},
 					&cli.Command{
-						Name:    "yearly",
+						Name:    "year",
 						Usage:   "generate monthly report",
 						Aliases: []string{"y"},
 						Action: func(cCtx *cli.Context) error {

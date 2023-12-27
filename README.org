@@ -66,16 +66,42 @@ ttt -f somefile.csv print
 Prints your file to =stdout= after sorting it and removing empty lines.
 
 ** Print Reports
-By default =ttt= will generate weekly reports.
 #+begin_src bash
 ttt -f somefile.csv report
 #+end_src
 Prints a worktime report to =stdout=.
 
+*** By week
+This is the default option.
+#+begin_src bash
+ttt -f somefile.csv report week
+#+end_src
+
+*** By month
+#+begin_src bash
+ttt -f somefile.csv report month
+#+end_src
+
+*** By week
+#+begin_src bash
+ttt -f somefile.csv report year
+#+end_src
+
 ** Plot reports
-By default =ttt= will generate monthly graphs.
 #+begin_src bash
 ttt -f somefile.csv graph
+#+end_src
+Prints a graph of your worktime to =stdout=
+
+*** By month
+This is the default option
+#+begin_src bash
+ttt -f somefile.csv graph month
+#+end_src
+
+*** By year
+#+begin_src bash
+ttt -f somefile.csv graph year
 #+end_src
 
 ** Print help
@@ -88,6 +114,7 @@ ttt --help
 =ttt= depends on the following projects:
 - [[https://github.com/mpvl/unique][Marcel van Lohuizen's unique package]]
 - [[https://github.com/urfave/cli][urfave's cli package]]
+- [[https://github.com/pterm/pterm][pterm]]
 
 ** Similar Projects
 - [[https://ledger-cli.org][ledger-cli]] the main inspiration for this project.
