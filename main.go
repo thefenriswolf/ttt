@@ -3,8 +3,7 @@ package main
 import ()
 
 func main() {
-	argParse() // hand of operation to the cli part of the program
-	// #todo: add text to logo, see: https://github.com/zyedidia/micro/blob/master/assets/micro-logo-drop.svg
+	initCli() // hand of operation to the cli part of the program
 	// #todo: html export
 	// #todo: graphs
 	// #todo: organization

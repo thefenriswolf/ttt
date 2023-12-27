@@ -13,6 +13,7 @@
   - [[#getting-started][Getting started]]
   - [[#organize-and-clean-database][Organize and clean database]]
   - [[#print-reports][Print Reports]]
+  - [[#plot-reports][Plot reports]]
   - [[#print-help][Print help]]
 - [[#credits][Credits]]
   - [[#dependencies][Dependencies]]
@@ -65,10 +66,17 @@ ttt -f somefile.csv print
 Prints your file to =stdout= after sorting it and removing empty lines.
 
 ** Print Reports
+By default =ttt= will generate weekly reports.
 #+begin_src bash
 ttt -f somefile.csv report
 #+end_src
 Prints a worktime report to =stdout=.
+
+** Plot reports
+By default =ttt= will generate monthly graphs.
+#+begin_src bash
+ttt -f somefile.csv graph
+#+end_src
 
 ** Print help
 #+begin_src bash

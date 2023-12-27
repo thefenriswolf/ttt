@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/csv"
-	"fmt"
 	"log"
 	"os"
 	"sort"
@@ -23,53 +22,6 @@ type Entry struct {
 	end      time.Time
 	duration time.Duration
 	job      string
-}
-
-func weekReport(fn string) {
-	dS := readParseSort(fn)
-	weekNumbers := weekList(dS)
-	for i := range weekNumbers {
-		for j := range dS {
-			if dS[j].kw == weekNumbers[i] {
-				date := dS[j].date
-				duration := dS[j].duration
-				dateF := date.Format(datefmt_ddmmyyyy)
-				durationF := duration.String()
-				fmt.Printf("%s: %s\n", dateF, durationF)
-			}
-		}
-		kW := weekNumbers[i]
-		weekSum := weekSum(dS, kW)
-		overtime := calculateOvertime(weeklyHours, weekSum)
-		fmt.Printf("=========================\nSummary KW%d:\n-------------------------\nWeekly sum: %s\n", kW, weekSum)
-		fmt.Printf("Weekly overtime: %s\n=========================\n\n\n", overtime)
-	}
-}
-
-func formatData(ch chan string, timestr time.Time, formatstr string) {
-	ch <- timestr.Format(formatstr)
-}
-
-func prettyPrint(fn string) {
-	dS := readParseSort(fn)
-	ic := make(chan string)
-	defer close(ic)
-	for i, _ := range dS {
-		date := dS[i].date
-		go formatData(ic, date, datefmt_ddmmyyyy)
-		dateF := <-ic
-
-		startTime := dS[i].start
-		go formatData(ic, startTime, timefmt_hhmm)
-		startTimeF := <-ic
-
-		endTime := dS[i].end
-		go formatData(ic, endTime, timefmt_hhmm)
-		endTimeF := <-ic
-
-		jobName := dS[i].job
-		fmt.Printf("%s %s %s %s\n", dateF, startTimeF, endTimeF, jobName)
-	}
 }
 
 func readParseSort(filename string) []Entry {
