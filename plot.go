@@ -6,7 +6,11 @@ import (
 	"os"
 )
 
-func graphHours(fn string, i int) {
+func graphHours(s string, i int) {
+	weeklyGraph("fn", 3)
+}
+
+func weeklyGraph(fn string, i int) {
 	// init drawing area
 	area, err := pterm.DefaultArea.WithFullscreen().WithCenter().Start()
 	if err != nil {
@@ -41,6 +45,7 @@ func graphHours(fn string, i int) {
 	pterm.Println()
 	if result == true {
 		// overtime
+		area.Update()
 		pterm.DefaultBasicText.Println("Monthly ovetime:")
 		pterm.DefaultBarChart.WithHorizontal().WithBars(barData).WithShowValue().Render()
 	}

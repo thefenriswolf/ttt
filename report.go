@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -26,28 +27,35 @@ func weekReport(fn string) {
 	}
 }
 
-func formatData(ch chan string, timestr time.Time, formatstr string) {
-	ch <- timestr.Format(formatstr)
+func formatData(timestr time.Time, formatstr string) string {
+	return timestr.Format(formatstr)
 }
 
 func prettyPrint(fn string) {
 	dS := readParseSort(fn)
-	ic := make(chan string)
-	defer close(ic)
+	var wg sync.WaitGroup
 	for i, _ := range dS {
+		wg.Add(3) // add 3 calls to stack
 		date := dS[i].date
-		go formatData(ic, date, datefmt_ddmmyyyy)
-		dateF := <-ic
-
+		var dateF string
+		go func() {
+			dateF = formatData(date, datefmt_ddmmyyyy)
+			wg.Done()
+		}()
 		startTime := dS[i].start
-		go formatData(ic, startTime, timefmt_hhmm)
-		startTimeF := <-ic
-
+		var startTimeF string
+		go func() {
+			startTimeF = formatData(startTime, timefmt_hhmm)
+			wg.Done()
+		}()
 		endTime := dS[i].end
-		go formatData(ic, endTime, timefmt_hhmm)
-		endTimeF := <-ic
-
+		var endTimeF string
+		go func() {
+			endTimeF = formatData(endTime, timefmt_hhmm)
+			wg.Done()
+		}()
 		jobName := dS[i].job
+		wg.Wait()
 		fmt.Printf("%s %s %s %s\n", dateF, startTimeF, endTimeF, jobName)
 	}
 }
