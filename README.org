@@ -11,7 +11,9 @@
   - [[#manual][Manual]]
 - [[#usage][Usage]]
   - [[#getting-started][Getting started]]
-  - [[#organize-and-clean-database][Organize and clean database]]
+  - [[#create-a-journal-file][Create a Journal File]]
+  - [[#edit-journal-settings][Edit Journal settings]]
+  - [[#organize-and-clean-the-database][Organize and clean the database]]
   - [[#print-reports][Print Reports]]
   - [[#plot-reports][Plot reports]]
   - [[#print-help][Print help]]
@@ -59,9 +61,23 @@ As you can tell from the example database below, the entries don't have to be in
 20.01.2023 1400 1700 $Jobname
 #+end_src
 
-** Organize and clean database
+** Create a Journal File
 #+begin_src bash
-ttt -f somefile.csv print
+ttt init
+#+end_src
+
+** Edit Journal settings
+The header of your journal file contains setting fields.
+
+Here you can set things like:
+- =hours=: your weekly workhours
+- =delimiter=: By default =ttt= uses a single space ' '
+- =datefmt=: By default =ttt= uses *DD.MM.YYYY*
+- =timefmt=: By default =ttt= uses *HHMM*
+
+** Organize and clean the database
+#+begin_src bash
+ttt -f somefile.csv print >> newfile.csv
 #+end_src
 Prints your file to =stdout= after sorting it and removing empty lines.
 

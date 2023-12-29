@@ -38,11 +38,20 @@ func initCli() {
 		//commands
 		Commands: []*cli.Command{
 			&cli.Command{
+				Name:    "init",
+				Aliases: []string{"i"},
+				Usage:   "create a template file in the current directory",
+				Action: func(cCtx *cli.Context) error {
+					writeTemplate()
+					return nil
+				},
+			},
+			&cli.Command{
 				Name:    "print",
 				Aliases: []string{"p"},
 				Usage:   "print cleaned up source file to stdout",
 				Action: func(cCtx *cli.Context) error {
-					prettyPrint(filename)
+					prettyPrint(filename, settings)
 					return nil
 				},
 			},
@@ -134,7 +143,7 @@ func initCli() {
 func reportWorktime(fn string, timeframe int) {
 	switch {
 	case timeframe == 1:
-		weekReport(fn)
+		weekReport(fn, settings)
 	case timeframe == 2:
 		fmt.Println("monthly not implemented yet")
 	case timeframe == 3:

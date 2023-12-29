@@ -1,6 +1,8 @@
-# hours: 30
-# delimiter: ' '
-# datefmt: "02.01.2006"
-# timefmt: "1504"
+# ttt journal file
+#
+# hours: 60
+# delimiter: 
+# datefmt: 02.01.2006
+# timefmt: 1504
 
 27.12.2023 0900 1700 Job
