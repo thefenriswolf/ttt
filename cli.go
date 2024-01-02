@@ -14,7 +14,7 @@ func initCli() {
 	app := &cli.App{
 		// app definition
 		Name:     "ttt",
-		Version:  "v0.0.1",
+		Version:  "20240102",
 		Compiled: time.Now(),
 		Authors: []*cli.Author{
 			&cli.Author{
@@ -55,7 +55,6 @@ func initCli() {
 					return nil
 				},
 			},
-			// #todo: create helper function for monthly, weekly, and yearly reports
 			&cli.Command{
 				Name:        "graph",
 				Aliases:     []string{"g"},
@@ -145,7 +144,21 @@ func reportWorktime(fn string, timeframe int) {
 	case timeframe == 1:
 		weekReport(fn, settings)
 	case timeframe == 2:
-		fmt.Println("monthly not implemented yet")
+		monthReport(fn, settings)
+	case timeframe == 3:
+		fmt.Println("yearly not implemented yet")
+	default:
+		fmt.Println("default not implemented yet")
+		return
+	}
+}
+
+func graphWorktime(fn string, timeframe int) {
+	switch {
+	case timeframe == 1:
+		fmt.Println("yearly not implemented yet")
+	case timeframe == 2:
+		fmt.Println("yearly not implemented yet")
 	case timeframe == 3:
 		fmt.Println("yearly not implemented yet")
 	default:

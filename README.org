@@ -41,7 +41,8 @@ sudo mv ttt /usr/local/bin # optional
 * Usage
 ** Getting started
 Create a database file, this is always a =CSV= file.
-*!Currently you can't change field order and delimiter at runtime!* This will be implemented in the future.
+*!Currently you can't change field order at runtime!*
+This may be implemented in the future.
 
 The following defaults apply:
 - delimiter: ' ' (single space)
@@ -62,6 +63,7 @@ As you can tell from the example database below, the entries don't have to be in
 #+end_src
 
 ** Create a Journal File
+=ttt= will create a template file at the current directory.
 #+begin_src bash
 ttt init
 #+end_src
@@ -86,19 +88,78 @@ Prints your file to =stdout= after sorting it and removing empty lines.
 ttt -f somefile.csv report
 #+end_src
 Prints a worktime report to =stdout=.
+**** Example
+#+begin_src csv
+[...]
+
+20.01.2023 1400 1700 Job
+20.02.2023 1400 1700 Job
+20.03.2023 1400 1700 Job
+20.04.2023 1400 1700 Job
+20.05.2023 1400 1700 Job
+20.06.2023 1400 1700 Job
+20.07.2023 1400 1700 Job
+20.08.2023 1400 1700 Job
+20.09.2023 1400 1700 Job
+
+[...]
+#+end_src
 
 *** By week
 This is the default option.
 #+begin_src bash
 ttt -f somefile.csv report week
 #+end_src
+**** Example
+#+begin_src csv
+[...]
+
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+20.01.2023: 3h0m0s
+=========================
+Summary KW3:
+-------------------------
+Weekly sum: 42h0m0s
+Weekly overtime: 12h0m0s
+=========================
+
+[...]
+#+end_src
 
 *** By month
 #+begin_src bash
 ttt -f somefile.csv report month
 #+end_src
+**** Example
+#+begin_src csv
+[...]
 
-*** By week
+20.12.2023: 3h0m0s
+20.12.2023: 3h0m0s
+20.12.2023: 3h0m0s
+20.12.2023: 3h0m0s
+20.12.2023: 3h0m0s
+=========================
+Summary of December:
+-------------------------
+Monthly sum: 15h0m0s
+
+[...]
+#+end_src
+
+*** By year (NOT IMPLEMENTED YET)
 #+begin_src bash
 ttt -f somefile.csv report year
 #+end_src

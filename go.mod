@@ -4,8 +4,8 @@ go 1.21.4
 
 require (
 	github.com/mpvl/unique v0.0.0-20150818121801-cbe035fff7de
-	github.com/pterm/pterm v0.12.72
-	github.com/urfave/cli/v2 v2.27.0
+	github.com/pterm/pterm v0.12.73
+	github.com/urfave/cli/v2 v2.27.1
 )
 
 require (

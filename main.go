@@ -8,7 +8,5 @@ func main() {
 	// #todo: html export
 	// #todo: graphs
 	// #todo: organization
-	// #todo: strip excess whitespace
-	// #todo: monthly reports
 	// #todo: yearly reports
 }

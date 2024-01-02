@@ -14,6 +14,17 @@ func durationSum(data []Entry) time.Duration {
 	return s
 }
 
+func monthList(data []Entry) []int {
+	var months []int
+	for i := range data {
+		dateString := data[i].date
+		months = append(months, int(dateString.Month()))
+	}
+	// only keep unique months
+	unique.Ints(&months)
+	return months
+}
+
 func weekList(data []Entry) []int {
 	// get all week numbers contained in list of structs "data"
 	var kWeeks []int
@@ -28,6 +39,20 @@ func weekList(data []Entry) []int {
 func calculateOvertime(targetHours time.Duration, actualHours time.Duration) time.Duration {
 	// overtime can be negative or positive
 	return actualHours - targetHours
+}
+
+func monthSum(data []Entry, monthNum int) time.Duration {
+	var month []Entry
+	// create array of all entry corresponding to the given month
+	for i := range data {
+		monthN := int((data[i].date).Month())
+		if monthN == monthNum {
+			month = append(month, data[i])
+		}
+	}
+	// calculate sum over all days in that week
+	monthSum := durationSum(month)
+	return monthSum
 }
 
 func weekSum(data []Entry, weekNumber int) time.Duration {
