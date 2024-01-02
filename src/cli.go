@@ -1,4 +1,4 @@
-package main
+package ttt
 
 import (
 	"fmt"
@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// parses and handles cli input
 func initCli() {
 	var filename string
 	app := &cli.App{
@@ -138,7 +139,7 @@ func initCli() {
 	}
 }
 
-// helper report function
+// report helper function
 func reportWorktime(fn string, timeframe int) {
 	switch {
 	case timeframe == 1:
@@ -153,6 +154,7 @@ func reportWorktime(fn string, timeframe int) {
 	}
 }
 
+// graph helper function
 func graphWorktime(fn string, timeframe int) {
 	switch {
 	case timeframe == 1:

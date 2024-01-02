@@ -1,9 +1,14 @@
+// ttt - time tracker tool
 package main
 
-import ()
+import (
+	"github.com/thefenriswolf/src/ttt"
+)
 
 func main() {
+	// initializes settings reader
 	initSettings()
+	// initializes cli environment
 	initCli()
 	// #todo: html export
 	// #todo: graphs
