@@ -1,4 +1,4 @@
-package ttt
+package main
 
 import (
 	"github.com/mpvl/unique"
