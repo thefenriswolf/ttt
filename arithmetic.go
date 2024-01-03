@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// sum duration over all given elements
 func durationSum(data []Entry) time.Duration {
 	// calulate over all durations in array
 	var s time.Duration = 0
@@ -14,6 +15,7 @@ func durationSum(data []Entry) time.Duration {
 	return s
 }
 
+// generate list of months from data
 func monthList(data []Entry) []int {
 	var months []int
 	for i := range data {
@@ -25,6 +27,7 @@ func monthList(data []Entry) []int {
 	return months
 }
 
+// generate list of weeks from data
 func weekList(data []Entry) []int {
 	// get all week numbers contained in list of structs "data"
 	var kWeeks []int
@@ -36,11 +39,13 @@ func weekList(data []Entry) []int {
 	return kWeeks
 }
 
+// simple subtraction to calculate overtime
 func calculateOvertime(targetHours time.Duration, actualHours time.Duration) time.Duration {
 	// overtime can be negative or positive
 	return actualHours - targetHours
 }
 
+// helper function that sums a single month
 func monthSum(data []Entry, monthNum int) time.Duration {
 	var month []Entry
 	// create array of all entry corresponding to the given month
@@ -55,6 +60,7 @@ func monthSum(data []Entry, monthNum int) time.Duration {
 	return monthSum
 }
 
+// helper function that sums a single week
 func weekSum(data []Entry, weekNumber int) time.Duration {
 	var week []Entry
 	// create array of all entry corresponding to the given week
@@ -68,6 +74,7 @@ func weekSum(data []Entry, weekNumber int) time.Duration {
 	return weekSum
 }
 
+// sums up the last given week
 func lastWeekSum(data []Entry, weeks []int) time.Duration {
 	var lastWeek []Entry
 	// create array of all entry corresponding to the most recent week

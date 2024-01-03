@@ -42,7 +42,7 @@ func initCli() {
 				Aliases: []string{"i"},
 				Usage:   "create a template file in the current directory",
 				Action: func(cCtx *cli.Context) error {
-					writeTemplate()
+					writeTemplate(filename)
 					return nil
 				},
 			},

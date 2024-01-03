@@ -87,7 +87,7 @@ func formatData(timestr time.Time, formatstr string) string {
 func prettyPrint(fn string, s Settings) {
 	dS := readParseSort(fn, s)
 	var wg sync.WaitGroup
-	for i, _ := range dS {
+	for i := range dS {
 		wg.Add(3) // add 3 calls to wg stack
 		date := dS[i].date
 		var dateF string

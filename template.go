@@ -7,11 +7,16 @@ import (
 	"time"
 )
 
-func writeTemplate() {
-	dateTime := time.Now()
-	cDate := dateTime.Format("20060102")
-	const postfix string = "_ttt.csv"
-	filename := cDate + postfix
+func writeTemplate(fn string) {
+	var filename string
+	if fn == "" {
+		dateTime := time.Now()
+		cDate := dateTime.Format("20060102")
+		const postfix string = "_ttt.csv"
+		filename = cDate + postfix
+	} else {
+		filename = fn
+	}
 
 	lines := []string{
 		"# ttt journal file",

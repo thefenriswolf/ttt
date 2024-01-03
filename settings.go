@@ -22,12 +22,12 @@ type Settings struct {
 
 const csvComment = '#' // cannot be changed by the user
 
-var default_csvDelim rune = ' '
-var default_datefmt_ddmmyyyy string = "02.01.2006" // dd.mm.yyyy
-var default_timefmt_hhmm string = "1504"           // hhmm
-var default_timefmt_hhmmss string = "150405"       // hhmmss
-var default_hours time.Duration = 30               // hours
-var default_weeklyHours time.Duration = time.Duration(default_hours * time.Hour)
+const default_csvDelim rune = ' '
+const default_datefmt_ddmmyyyy string = "02.01.2006" // dd.mm.yyyy
+const default_timefmt_hhmm string = "1504"           // hhmm
+const default_timefmt_hhmmss string = "150405"       // hhmmss
+const default_hours time.Duration = 30               // hours
+const default_weeklyHours time.Duration = time.Duration(default_hours * time.Hour)
 
 var settings Settings
 

@@ -43,13 +43,13 @@ func weeklyGraph(fn string, i int) {
 		fmt.Println(err)
 	}
 	pterm.Println()
-	if result == true {
+	if result {
 		// overtime
 		area.Update()
 		pterm.DefaultBasicText.Println("Monthly ovetime:")
 		pterm.DefaultBarChart.WithHorizontal().WithBars(barData).WithShowValue().Render()
 	}
-	if result == false {
+	if !result {
 		pterm.Println("Exiting ...")
 		os.Exit(0)
 	}

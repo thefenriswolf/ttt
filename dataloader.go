@@ -36,10 +36,18 @@ func timeDiff(start string, end string, format string) time.Duration {
 	return diff
 }
 
+func parseError(s Settings) {
+	fmt.Printf("ttt detected an issue with the input file!\n\n")
+	fmt.Printf("Make sure it adheres to the layout: DATE  START_TIME  END_TIME  JOBNAME\n")
+	fmt.Printf("Your current settings are:\n\nDelimiter: %s\nDate format: %s\nTime format: %s\nWeekly Hours: %s\n", string(s.csvDelim), s.datefmt, s.timefmt, s.weeklyHours.String())
+	fmt.Printf("\nError:\n")
+}
+
 func timeParse(timestring string, format string) time.Time {
 	time, err := time.Parse(format, timestring) //-> time.Time
 	if err != nil {
-		log.Print(err)
+		parseError(settings)
+		log.Fatal(err)
 	}
 	return time
 }
@@ -61,11 +69,6 @@ func extractCSVData(input [][]string, s Settings) []Entry {
 	}
 	return allEntries
 }
-
-//  hours: 30
-// delimiter: ' '
-// datefmt: "02.01.2006"
-// timefmt: "1504"
 
 func settingsParser(set []string) {
 	const sep string = ":"
@@ -94,7 +97,7 @@ func settingsParser(set []string) {
 
 func dateTimeFormat(line string, sep string) string {
 	_, value, valid := strings.Cut(line, sep)
-	if valid == false {
+	if !valid {
 		log.Fatal("not a valid config: \n", line)
 	}
 	dateTime := strings.TrimSpace(value)
@@ -103,7 +106,7 @@ func dateTimeFormat(line string, sep string) string {
 
 func delimiterParser(line string, sep string) rune {
 	_, value, valid := strings.Cut(line, sep)
-	if valid == false {
+	if !valid {
 		log.Fatal("not a valid config: \n", line)
 	}
 	value = strings.TrimSpace(value)
@@ -118,7 +121,7 @@ func delimiterParser(line string, sep string) rune {
 
 func hoursParser(line string, sep string) time.Duration {
 	_, value, valid := strings.Cut(line, sep)
-	if valid == false {
+	if !valid {
 		log.Fatal("not a valid config: \n", line)
 	}
 	value = strings.TrimSpace(value)
