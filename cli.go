@@ -14,7 +14,7 @@ func initCli() {
 	app := &cli.App{
 		// app definition
 		Name:     "ttt",
-		Version:  "20240102",
+		Version:  "20240104",
 		Compiled: time.Now(),
 		Authors: []*cli.Author{
 			&cli.Author{
