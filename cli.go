@@ -55,37 +55,37 @@ func initCli() {
 					return nil
 				},
 			},
-			&cli.Command{
-				Name:        "graph",
-				Aliases:     []string{"g"},
-				Usage:       "graph worktime",
-				Description: "If no command is specified ttt will report in weekly mode",
-				Action: func(cCtx *cli.Context) error {
-					graphHours(filename, 1)
-					return nil
-				},
-				// subcommands for: graph
-				Subcommands: []*cli.Command{
-					&cli.Command{
-						Name:    "month",
-						Usage:   "generate monthly graph",
-						Aliases: []string{"m"},
-						Action: func(cCtx *cli.Context) error {
-							graphHours(filename, 1)
-							return nil
-						},
-					},
-					&cli.Command{
-						Name:    "year",
-						Usage:   "generate yearly graph",
-						Aliases: []string{"y"},
-						Action: func(cCtx *cli.Context) error {
-							graphHours(filename, 2)
-							return nil
-						},
-					},
-				},
-			},
+			// &cli.Command{
+			// 	Name:        "graph",
+			// 	Aliases:     []string{"g"},
+			// 	Usage:       "graph worktime",
+			// 	Description: "If no command is specified ttt will report in weekly mode",
+			// 	Action: func(cCtx *cli.Context) error {
+			// 		graphHours(filename, 1)
+			// 		return nil
+			// 	},
+			// 	// subcommands for: graph
+			// 	Subcommands: []*cli.Command{
+			// 		&cli.Command{
+			// 			Name:    "month",
+			// 			Usage:   "generate monthly graph",
+			// 			Aliases: []string{"m"},
+			// 			Action: func(cCtx *cli.Context) error {
+			// 				graphHours(filename, 1)
+			// 				return nil
+			// 			},
+			// 		},
+			// 		&cli.Command{
+			// 			Name:    "year",
+			// 			Usage:   "generate yearly graph",
+			// 			Aliases: []string{"y"},
+			// 			Action: func(cCtx *cli.Context) error {
+			// 				graphHours(filename, 2)
+			// 				return nil
+			// 			},
+			// 		},
+			// 	},
+			// },
 			&cli.Command{
 				Name:        "report",
 				Aliases:     []string{"rep", "r"},
@@ -153,16 +153,16 @@ func reportWorktime(fn string, timeframe int) {
 	}
 }
 
-func graphWorktime(fn string, timeframe int) {
-	switch {
-	case timeframe == 1:
-		fmt.Println("yearly not implemented yet")
-	case timeframe == 2:
-		fmt.Println("yearly not implemented yet")
-	case timeframe == 3:
-		fmt.Println("yearly not implemented yet")
-	default:
-		fmt.Println("default not implemented yet")
-		return
-	}
-}
+// func graphWorktime(fn string, timeframe int) {
+// 	switch {
+// 	case timeframe == 1:
+// 		fmt.Println("yearly not implemented yet")
+// 	case timeframe == 2:
+// 		fmt.Println("yearly not implemented yet")
+// 	case timeframe == 3:
+// 		fmt.Println("yearly not implemented yet")
+// 	default:
+// 		fmt.Println("default not implemented yet")
+// 		return
+// 	}
+//}

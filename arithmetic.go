@@ -75,15 +75,15 @@ func weekSum(data []Entry, weekNumber int) time.Duration {
 }
 
 // sums up the last given week
-func lastWeekSum(data []Entry, weeks []int) time.Duration {
-	var lastWeek []Entry
-	// create array of all entry corresponding to the most recent week
-	for i := range data {
-		if data[i].kw == weeks[len(weeks)-1] {
-			lastWeek = append(lastWeek, data[i])
-		}
-	}
-	// calculate sum over all days in that week
-	lastWeekSum := durationSum(lastWeek)
-	return lastWeekSum
-}
+// func lastWeekSum(data []Entry, weeks []int) time.Duration {
+// 	var lastWeek []Entry
+// 	// create array of all entry corresponding to the most recent week
+// 	for i := range data {
+// 		if data[i].kw == weeks[len(weeks)-1] {
+// 			lastWeek = append(lastWeek, data[i])
+// 		}
+// 	}
+// 	// calculate sum over all days in that week
+// 	lastWeekSum := durationSum(lastWeek)
+// 	return lastWeekSum
+// }
