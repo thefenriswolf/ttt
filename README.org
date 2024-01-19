@@ -15,7 +15,7 @@
   - [[#edit-journal-settings][Edit Journal settings]]
   - [[#organize-and-clean-the-database][Organize and clean the database]]
   - [[#print-reports][Print Reports]]
-  - [[#plot-reports][Plot reports]]
+  - [[#plot-reports-not-implemented-yet][Plot reports (NOT IMPLEMENTED YET)]]
   - [[#print-help][Print help]]
 - [[#credits][Credits]]
   - [[#dependencies][Dependencies]]
@@ -30,14 +30,21 @@
 go get github.com/thefenriswolf/ttt
 #+end_src
 ** Manual
+*** Make
 #+begin_src bash
 git clone https://github.com/thefenriswolf/ttt.git
 cd ttt
-go build .
+make PLATTFORM # linux, osx, windows
 
-sudo mv ttt /usr/local/bin # optional
+sudo mv ttt_PLATTFORM_amd64 /usr/local/bin/ttt # optional
 #+end_src
-
+*** Nix
+#+begin_src bash
+git clone https://github.com/thefenriswolf/ttt.git
+cd ttt
+nix-shell shell.nix
+nix-build
+#+end_src
 * Usage
 ** Getting started
 Create a database file, this is always a =CSV= file.
@@ -164,7 +171,7 @@ Monthly sum: 15h0m0s
 ttt -f somefile.csv report year
 #+end_src
 
-** Plot reports
+** Plot reports (NOT IMPLEMENTED YET)
 #+begin_src bash
 ttt -f somefile.csv graph
 #+end_src
