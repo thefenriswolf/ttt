@@ -1,14 +1,7 @@
-{ pkgs ? (let sources = import ./nix/sources.nix;
-in import sources.nixpkgs {
-  overlays = [ (import "${sources.gomod2nix}/overlay.nix") ];
-}) }:
+{ pkgs ? import <nixpkgs> {} }:
 
-let goEnv = pkgs.mkGoEnv { pwd = ./.; };
-in pkgs.mkShell {
-  packages = [
-    goEnv
-    pkgs.gomod2nix
-    pkgs.niv
+pkgs.mkShell {
+  buildInputs = [
     pkgs.go
     pkgs.gotools # godoc, ...
     pkgs.go-tools # staticcheck, ...
@@ -19,5 +12,7 @@ in pkgs.mkShell {
     pkgs.gotests
     pkgs.gocode
     pkgs.govulncheck
+    # keep this line if you use bash
+    pkgs.bashInteractive
   ];
 }

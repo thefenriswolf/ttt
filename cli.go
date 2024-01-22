@@ -5,16 +5,21 @@ import (
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
+	"runtime"
 	"sort"
 	"time"
 )
+
+const ARCH = string(runtime.GOARCH)
+const OS = string(runtime.GOOS + " ")
+const VERSION = "v20240121, built for: " + OS + ARCH
 
 func initCli() {
 	var filename string
 	app := &cli.App{
 		// app definition
 		Name:     "ttt",
-		Version:  "20240119",
+		Version:  VERSION,
 		Compiled: time.Now(),
 		Authors: []*cli.Author{
 			&cli.Author{
