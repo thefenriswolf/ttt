@@ -23,7 +23,8 @@ func inttoMonth(month int) string {
 	return monthMap[month]
 }
 
-func monthReport(fn string, s Settings) {
+func monthReport(fn string, s Settings) []string {
+	report := []string{}
 	db := readParseSort(fn, s)
 	months := monthList(db)
 	for i := range months {
@@ -35,6 +36,7 @@ func monthReport(fn string, s Settings) {
 				duration := db[j].duration
 				dateF := date.Format(s.datefmt)
 				durationF := duration.String()
+				report = append(report, fmt.Sprintf("%s: %s", dateF, durationF))
 				fmt.Printf("%s: %s\n", dateF, durationF)
 			}
 		}
@@ -55,11 +57,18 @@ func monthReport(fn string, s Settings) {
 		wg.Wait() // wait for goroutines to finish before printing report
 		fmt.Printf("=========================\nSummary of %s:\n-------------------------\nMonthly sum: %s\n\n\n", mString, sumOverMonth)
 		//fmt.Printf("Monthly overtime: %s\n=========================\n\n\n", overtime)
+
+		report = append(report, "=========================")
+		report = append(report, fmt.Sprintf("Summary %s:", mString))
+		report = append(report, "-------------------------")
+		report = append(report, fmt.Sprintf("Monthly sum: %s", sumOverMonth))
 	}
 	fmt.Printf("\nOvertime calculation is currently only supported for weekly reports!\n")
+	return report
 }
 
-func weekReport(fn string, s Settings) {
+func weekReport(fn string, s Settings) []string {
+	report := []string{}
 	db := readParseSort(fn, s)
 	weekNumbers := weekList(db)
 	for i := range weekNumbers {
@@ -69,15 +78,25 @@ func weekReport(fn string, s Settings) {
 				duration := db[j].duration
 				dateF := date.Format(s.datefmt)
 				durationF := duration.String()
+				report = append(report, fmt.Sprintf("%s: %s", dateF, durationF))
 				fmt.Printf("%s: %s\n", dateF, durationF)
 			}
 		}
 		kW := weekNumbers[i]
 		sumOverWeek := weekSum(db, kW)
 		overtime := calculateOvertime(settings.weeklyHours, sumOverWeek)
+
 		fmt.Printf("=========================\nSummary KW%d:\n-------------------------\nWeekly sum: %s\n", kW, sumOverWeek)
+		report = append(report, "=========================")
+		report = append(report, fmt.Sprintf("Summary KW%d:", kW))
+		report = append(report, "-------------------------")
+		report = append(report, fmt.Sprintf("Weekly sum: %s", sumOverWeek))
+
 		fmt.Printf("Weekly overtime: %s\n=========================\n\n\n", overtime)
+		report = append(report, fmt.Sprintf("Weekly overtime: %s", overtime))
+		report = append(report, "=========================")
 	}
+	return report
 }
 
 func formatData(timestr time.Time, formatstr string) string {

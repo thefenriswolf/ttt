@@ -27,6 +27,6 @@ test:
 #	go test -bench=. -benchmem
 
 clean:
-	rm -v ttt_linux_* ttt_osx_* ttt_win_* ttt result
+	rm -v ttt_linux_* ttt_osx_* ttt_win_* ttt
 
 # end

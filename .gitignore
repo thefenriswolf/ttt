@@ -10,6 +10,7 @@
 ttt*
 result
 .direnv
+*.pdf
 
 # Test binary, built with `go test -c`
 *.test

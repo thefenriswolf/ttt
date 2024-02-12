@@ -12,7 +12,7 @@ import (
 
 const ARCH = string(runtime.GOARCH)
 const OS = string(runtime.GOOS + " ")
-const VERSION = "v20240121, built for: " + OS + ARCH
+const VERSION = "v20240212, built for: " + OS + ARCH
 
 func initCli() {
 	var filename string
@@ -60,37 +60,37 @@ func initCli() {
 					return nil
 				},
 			},
-			// &cli.Command{
-			// 	Name:        "graph",
-			// 	Aliases:     []string{"g"},
-			// 	Usage:       "graph worktime",
-			// 	Description: "If no command is specified ttt will report in weekly mode",
-			// 	Action: func(cCtx *cli.Context) error {
-			// 		graphHours(filename, 1)
-			// 		return nil
-			// 	},
-			// 	// subcommands for: graph
-			// 	Subcommands: []*cli.Command{
-			// 		&cli.Command{
-			// 			Name:    "month",
-			// 			Usage:   "generate monthly graph",
-			// 			Aliases: []string{"m"},
-			// 			Action: func(cCtx *cli.Context) error {
-			// 				graphHours(filename, 1)
-			// 				return nil
-			// 			},
-			// 		},
-			// 		&cli.Command{
-			// 			Name:    "year",
-			// 			Usage:   "generate yearly graph",
-			// 			Aliases: []string{"y"},
-			// 			Action: func(cCtx *cli.Context) error {
-			// 				graphHours(filename, 2)
-			// 				return nil
-			// 			},
-			// 		},
-			// 	},
-			// },
+			&cli.Command{
+				Name:        "export",
+				Aliases:     []string{"e"},
+				Usage:       "export worktime report as PDF",
+				Description: "If no command is specified ttt will report in weekly mode",
+				Action: func(cCtx *cli.Context) error {
+					exportWorktime(filename, 2)
+					return nil
+				},
+				// subcommands for: graph
+				Subcommands: []*cli.Command{
+					&cli.Command{
+						Name:    "month",
+						Usage:   "generate monthly PDF report",
+						Aliases: []string{"m"},
+						Action: func(cCtx *cli.Context) error {
+							exportWorktime(filename, 1)
+							return nil
+						},
+					},
+					&cli.Command{
+						Name:    "week",
+						Usage:   "generate weekly graph",
+						Aliases: []string{"y"},
+						Action: func(cCtx *cli.Context) error {
+							exportWorktime(filename, 2)
+							return nil
+						},
+					},
+				},
+			},
 			&cli.Command{
 				Name:        "report",
 				Aliases:     []string{"rep", "r"},
@@ -158,16 +158,14 @@ func reportWorktime(fn string, timeframe int) {
 	}
 }
 
-// func graphWorktime(fn string, timeframe int) {
-// 	switch {
-// 	case timeframe == 1:
-// 		fmt.Println("yearly not implemented yet")
-// 	case timeframe == 2:
-// 		fmt.Println("yearly not implemented yet")
-// 	case timeframe == 3:
-// 		fmt.Println("yearly not implemented yet")
-// 	default:
-// 		fmt.Println("default not implemented yet")
-// 		return
-// 	}
-//}
+func exportWorktime(fn string, timeframe int) {
+	switch {
+	case timeframe == 1:
+		createPDF(fn, "month")
+	case timeframe == 2:
+		createPDF(fn, "week")
+	default:
+		createPDF(fn, "week")
+		return
+	}
+}

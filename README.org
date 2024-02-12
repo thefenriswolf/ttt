@@ -15,6 +15,7 @@
   - [[#edit-journal-settings][Edit Journal settings]]
   - [[#organize-and-clean-the-database][Organize and clean the database]]
   - [[#print-reports][Print Reports]]
+  - [[#export-reports-as-pdf][Export Reports as PDF]]
   - [[#plot-reports-not-implemented-yet][Plot reports (NOT IMPLEMENTED YET)]]
   - [[#print-help][Print help]]
 - [[#credits][Credits]]
@@ -169,6 +170,23 @@ Monthly sum: 15h0m0s
 *** By year (NOT IMPLEMENTED YET)
 #+begin_src bash
 ttt -f somefile.csv report year
+#+end_src
+
+** Export Reports as PDF
+#+begin_src bash
+ttt -f somefile.csv export
+#+end_src
+Prints a worktime report to a PDF file in your current directory.
+
+*** By week
+This is the default option.
+#+begin_src bash
+ttt -f somefile.csv export week
+#+end_src
+
+*** By month
+#+begin_src bash
+ttt -f somefile.csv export month
 #+end_src
 
 ** Plot reports (NOT IMPLEMENTED YET)
