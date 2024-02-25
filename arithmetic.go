@@ -1,14 +1,15 @@
 package main
 
 import (
-	"github.com/mpvl/unique"
 	"time"
+
+	"github.com/mpvl/unique"
 )
 
 // sum duration over all given elements
 func durationSum(data []Entry) time.Duration {
 	// calulate over all durations in array
-	var s time.Duration = 0
+	var s time.Duration
 	for i := range data {
 		s += data[i].duration
 	}

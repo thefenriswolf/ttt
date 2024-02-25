@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/go-pdf/fpdf"
 	"log"
 	"time"
+
+	"github.com/go-pdf/fpdf"
 )
 
 func createPDF(fn string, timeframe string) {

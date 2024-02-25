@@ -113,10 +113,9 @@ func delimiterParser(line string, sep string) rune {
 	if value == "" {
 		val := []rune(" ")
 		return val[0]
-	} else {
-		val := []rune(value)
-		return val[0]
 	}
+	val := []rune(value)
+	return val[0]
 }
 
 func hoursParser(line string, sep string) time.Duration {
@@ -149,9 +148,8 @@ func settingsReader(fileName string) {
 			continue
 		} else if scanner.Text()[0] != csvComment {
 			continue
-		} else {
-			settings = append(settings, scanner.Text())
 		}
+		settings = append(settings, scanner.Text())
 	}
 	// if no settings were applied we use the defaults
 	if len(settings) == 0 {

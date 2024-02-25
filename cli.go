@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"runtime"
 	"sort"
 	"time"
+
+	"github.com/urfave/cli/v2"
 )
 
 const ARCH = string(runtime.GOARCH)
@@ -26,8 +27,7 @@ func initCli() {
 				Name: "Stefan Rohrbacher (thefenriswolf)",
 			},
 		},
-		Usage: "CLI time tracker tool",
-		//UsageText:            "ttt [global options] command [subcommand]",
+		Usage:                "CLI time tracker tool",
 		EnableBashCompletion: true,
 		Suggest:              true,
 		HideVersion:          false,
