@@ -11,9 +11,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+const RELEASE = "v20240307"
 const ARCH = string(runtime.GOARCH)
 const OS = string(runtime.GOOS + " ")
-const VERSION = "v20240212, built for: " + OS + ARCH
+const VERSION = RELEASE + ", built for: " + OS + ARCH
 
 func initCli() {
 	var filename string
