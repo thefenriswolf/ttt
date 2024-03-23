@@ -11,7 +11,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const RELEASE = "v20240307"
+const RELEASE = "v20240323"
 const ARCH = string(runtime.GOARCH)
 const OS = string(runtime.GOOS + " ")
 const VERSION = RELEASE + ", built for: " + OS + ARCH

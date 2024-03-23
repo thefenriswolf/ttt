@@ -2,13 +2,13 @@
 
 buildGoModule rec {
   pname = "ttt";
-  version = "v20240307";
+  version = "v20240323";
 
   src = fetchFromGitHub {
     owner = "thefenriswolf";
     repo = "ttt";
     rev = "${version}";
-    hash = "sha256-d3oyPLh9vPNmbbT1qorc59a1cT3KFR89cyI67XiXsHU=";
+    hash = "sha256-bYfuh0SAIVm8KfCMXEhmBJjsw423jp22j3QXEiCNO/E=";
   };
   vendorHash = "sha256-ekZ5rRbvD8U+UEfqWbPCZ9v++ZDTpAuU3LT9hWlwC5Q=";
 

@@ -9,9 +9,12 @@ import (
 
 func createPDF(fn string, timeframe string) {
 	var data []string
-	if timeframe == "month" {
+	switch timeframe {
+	case "month":
 		data = monthReport(fn, settings)
-	} else {
+	case "week":
+		data = weekReport(fn, settings)
+	default:
 		data = weekReport(fn, settings)
 	}
 	day := time.Now().Format(time.DateOnly)
