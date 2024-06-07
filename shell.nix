@@ -11,7 +11,6 @@ pkgs.mkShell {
     pkgs.gomodifytags
     pkgs.gore
     pkgs.gotests
-    pkgs.gocode
     pkgs.govulncheck
     pkgs.revive
     # pkgs.goreleaser

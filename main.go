@@ -71,14 +71,11 @@ func confParser(conf []string) config {
 	return config
 }
 
-// const default_datefmt_ddmmyyyy string = "02.01.2006" // dd.mm.yyyy
-// const default_timefmt_hhmm string = "1504"
-
 func linesParser(lines []string) []entry {
 	var data []entry
 	const dateFormat = "02.01.2006"
 	const timeFormat = "1504"
-	const tmpDateFmt = "2006 January 1 " + timeFormat
+	const tmpDateFmt = "2006 1 2 " + timeFormat
 
 	for _, line := range lines {
 		if len(line) > 1 && !strings.Contains(line, "#") {
@@ -89,37 +86,39 @@ func linesParser(lines []string) []entry {
 			start := fields[1]
 			end := fields[2]
 
-			//fmt.Printf("date %v, start %v, end %v\n", date, start, end)
-			t, _ := time.Parse(dateFormat, date)
+			t, err := time.Parse(dateFormat, date)
+			if err != nil {
+				log.Fatal(err)
+			}
 
 			year, month, day := t.Date()
-			//fmt.Printf("year %v, month %v, day %v\n", year, month, day)
 
-			startTime := fmt.Sprintf("%i %s %i %i", year, month, day, start)
-			endTime := fmt.Sprintf("%i %s %i %i", year, month, day, end)
+			startTime := fmt.Sprintf("%v %v %v %v", year, int(month), day, start)
+			endTime := fmt.Sprintf("%v %v %v %v", year, int(month), day, end)
 
-			s, err := time.Parse(tmpDateFmt, string(startTime))
-			if err != nil {
-				log.Fatal(err)
-			}
-			e, err := time.Parse(tmpDateFmt, string(endTime))
-			if err != nil {
-				log.Fatal(err)
-			}
+			st := make(chan time.Time)
+			go parseTime(st, tmpDateFmt, startTime)
+
+			et := make(chan time.Time)
+			go parseTime(et, tmpDateFmt, endTime)
 
 			linedata.date = t
-			linedata.startTime = s
-			linedata.endTime = e
+			linedata.startTime = <-st
+			linedata.endTime = <-et
 
-			fmt.Printf("date %v, start %v, end %v\n", linedata.date, linedata.startTime, linedata.endTime)
-			// go func() {
-			//startTime := strings.Trim(dps[1], " ")
-			//fmt.Printf("start time: %s\n", startTime)
-			// 	wg.Done()
-			// }()
+			data = append(data, linedata)
 		}
 	}
 	return data
+}
+
+func parseTime(ch chan time.Time, fmt string, ts string) {
+	s, err := time.Parse(fmt, ts)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ch <- s
+	close(ch)
 }
 
 func main() {
@@ -134,7 +133,9 @@ func main() {
 	conf, lines := readLines(f)
 
 	_ = confParser(conf)
-	_ = linesParser(lines)
+	data := linesParser(lines)
 	// fmt.Println(config)
-	// fmt.Println(data)
+	for _, n := range data {
+		fmt.Printf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
+	}
 }
