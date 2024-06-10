@@ -77,8 +77,7 @@ func linesParser(lines []string) []entry {
 	const timeFormat = "1504"
 	const tmpDateFmt = "2006 1 2 " + timeFormat
 
-	for i, line := range lines {
-		fmt.Printf("\033[2K\rProcessing entry: %d", i+1)
+	for _, line := range lines {
 		if len(line) > 1 && !strings.Contains(line, "#") {
 			var linedata entry
 			fields := strings.Fields(line)
@@ -92,10 +91,11 @@ func linesParser(lines []string) []entry {
 				log.Fatal(err)
 			}
 
-			year, month, day := t.Date()
+			year, m, day := t.Date()
+			month := int(m)
 
-			startTime := fmt.Sprintf("%v %v %v %v", year, int(month), day, start)
-			endTime := fmt.Sprintf("%v %v %v %v", year, int(month), day, end)
+			startTime := fmt.Sprintf("%d %d %d %s", year, month, day, start)
+			endTime := fmt.Sprintf("%d %d %d %s", year, month, day, end)
 
 			st := make(chan time.Time)
 			go parseTime(st, tmpDateFmt, startTime)
@@ -119,7 +119,6 @@ func parseTime(ch chan time.Time, fmt string, ts string) {
 		log.Fatal(err)
 	}
 	ch <- s
-	close(ch)
 }
 
 func main() {
@@ -137,17 +136,9 @@ func main() {
 	defer f.Close()
 
 	conf, lines := readLines(f)
+	fmt.Println(lines)
 
 	_ = confParser(conf)
-	data := linesParser(lines)
+	_ = linesParser(lines)
 
-	var buf []string
-	for i, n := range data {
-		tmp := fmt.Sprintf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
-		buf = append(buf, tmp)
-		fmt.Printf("\033[2K\rBuffering output: %d", i+1)
-		//	fmt.Printf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
-
-	}
-	fmt.Println(buf)
 }
