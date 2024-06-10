@@ -77,7 +77,8 @@ func linesParser(lines []string) []entry {
 	const timeFormat = "1504"
 	const tmpDateFmt = "2006 1 2 " + timeFormat
 
-	for _, line := range lines {
+	for i, line := range lines {
+		fmt.Printf("\033[2K\rProcessing entry: %d", i+1)
 		if len(line) > 1 && !strings.Contains(line, "#") {
 			var linedata entry
 			fields := strings.Fields(line)
@@ -125,6 +126,11 @@ func main() {
 	var filePath = flag.String("f", "", "ttt database file to use")
 	// var pprint = flag.Bool("print", false, "pretty print database file")
 	flag.Parse()
+	if len(os.Args) < 2 {
+		fmt.Printf("Usage of %s:\n", os.Args[0])
+		flag.PrintDefaults()
+		os.Exit(0)
+	}
 
 	f, err := os.Open(*filePath)
 	checkNPanic(err)
@@ -134,8 +140,14 @@ func main() {
 
 	_ = confParser(conf)
 	data := linesParser(lines)
-	// fmt.Println(config)
-	for _, n := range data {
-		fmt.Printf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
+
+	var buf []string
+	for i, n := range data {
+		tmp := fmt.Sprintf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
+		buf = append(buf, tmp)
+		fmt.Printf("\033[2K\rBuffering output: %d", i+1)
+		//	fmt.Printf("Date: %s\nStart: %s -- End: %s\nDiff: %s\n\n", n.date, n.startTime, n.endTime, n.endTime.Sub(n.startTime))
+
 	}
+	fmt.Println(buf)
 }
